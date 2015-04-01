@@ -88,6 +88,7 @@
   },
   "ext": [
     "rbush",
+    "earcut",
     {
       "module": "pbf",
       "browserify": true
