@@ -1,14 +1,7 @@
-// We can't use goog.color or goog.color.alpha because they interally use a hex
-// string representation that encodes each channel in a single byte.  This
-// causes occasional loss of precision and rounding errors, especially in the
-// alpha channel.
-
 goog.provide('ol.Color');
 goog.provide('ol.color');
 
 goog.require('goog.asserts');
-goog.require('goog.color');
-goog.require('goog.color.names');
 goog.require('ol');
 goog.require('ol.math');
 
@@ -34,7 +27,7 @@ ol.color.hexColorRe_ = /^#(?:[0-9a-f]{3}){1,2}$/i;
 
 
 /**
- * @see goog.color.rgbColorRe_
+ * Regular expression for matching and capturing RGB style strings.
  * @const
  * @type {RegExp}
  * @private
@@ -44,7 +37,7 @@ ol.color.rgbColorRe_ =
 
 
 /**
- * @see goog.color.alpha.rgbaColorRe_
+ * Regular expression for matching and capturing RGBA style strings.
  * @const
  * @type {RegExp}
  * @private
@@ -149,15 +142,8 @@ ol.color.fromString = (
  * @return {ol.Color} Color.
  */
 ol.color.fromStringInternal_ = function(s) {
-
-  var isHex = false;
-  if (ol.ENABLE_NAMED_COLORS && goog.color.names.hasOwnProperty(s)) {
-    s = goog.color.names[s];
-    isHex = true;
-  }
-
   var r, g, b, a, color, match;
-  if (isHex || (match = ol.color.hexColorRe_.exec(s))) { // hex
+  if ((match = ol.color.hexColorRe_.exec(s))) { // hex
     var n = s.length - 1; // number of hex digits
     goog.asserts.assert(n == 3 || n == 6,
         'Color string length should be 3 or 6');
@@ -191,7 +177,6 @@ ol.color.fromStringInternal_ = function(s) {
   } else {
     goog.asserts.fail(s + ' is not a valid color');
   }
-
 };
 
 

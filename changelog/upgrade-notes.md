@@ -4,6 +4,10 @@
 
 This option is no longer needed, so it was removed from the API.
 
+#### Removal of `ol.ENABLE_NAMED_COLORS`
+
+This change only affects the WebGL renderer and allowed use of named colors for that renderer. Note that the default setting was false and that the Canvas and DOM renderers allows named colors regardless.
+
 ### v3.15.0
 
 #### Internet Explorer 9 support
