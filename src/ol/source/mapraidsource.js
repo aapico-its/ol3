@@ -1,7 +1,5 @@
 goog.provide('ol.source.MapRAID');
 
-goog.require('ol.Attribution');
-goog.require('ol.TileUrlFunction');
 goog.require('ol.source.TileImage');
 
 
@@ -12,7 +10,7 @@ goog.require('ol.source.TileImage');
  *
  * @constructor
  * @extends {ol.source.TileImage}
- * @param {Object} options MapRAID options.
+ * @param {olx.source.MapRAIDOptions} options MapRAID options.
  * @api stable
  */
 ol.source.MapRAID = function(options) {
@@ -51,14 +49,6 @@ ol.source.MapRAID = function(options) {
   this.extension = goog.isDef(options.extension) ?
       options.extension : 'png';
 
-  /**
-   * @private
-   * @type {ol.TileCoordTransformType}
-   */
-  this.tileCoordTransform_ = this.tileGrid.createTileCoordTransform({
-    wrapX: options.wrapX
-  });
-
   this.setTileUrlFunction(goog.bind(this.tileUrlFunction, this));
 };
 goog.inherits(ol.source.MapRAID, ol.source.TileImage);
@@ -78,15 +68,4 @@ ol.source.MapRAID.prototype.tileUrlFunction =
 
   return this.url + '/' + this.layer + '/level' +
       z + '/' + z + x + '_' + y + '.' + this.extension;
-};
-
-
-/**
- * @inheritDoc
- * @api
- */
-ol.source.MapRAID.prototype.setTileUrlFunction = function(tileUrlFunction) {
-  goog.base(this, 'setTileUrlFunction',
-      ol.TileUrlFunction.withTileCoordTransform(
-          this.tileCoordTransform_, tileUrlFunction));
 };

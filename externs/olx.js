@@ -4095,6 +4095,16 @@ olx.source.ImageMapGuideOptions.prototype.params;
 
 
 /**
+ * @typedef {{url: string,
+ *     layer: (string),
+ *     gridset: (string),
+ *     extension: (string|undefined)}}
+ * @api
+ */
+olx.source.MapRAIDOptions;
+
+
+/**
  * @typedef {{layer: string,
  *     reprojectionErrorThreshold: (number|undefined),
  *     tileLoadFunction: (ol.TileLoadFunctionType|undefined),
