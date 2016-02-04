@@ -7,7 +7,6 @@ goog.require('goog.asserts');
 goog.require('goog.functions');
 goog.require('goog.vec.Mat4');
 goog.require('ol.color');
-goog.require('ol.color.Matrix');
 goog.require('ol.ext.earcut');
 goog.require('ol.extent');
 goog.require('ol.object');

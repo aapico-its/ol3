@@ -48,7 +48,8 @@
     "rbush": "1.4.2",
     "temp": "0.8.3",
     "vector-tile": "1.2.0",
-    "walk": "2.3.9"
+    "walk": "2.3.9",
+    "earcut": "1.4.2"
   },
   "devDependencies": {
     "clean-css": "3.4.9",
